@@ -1,28 +1,29 @@
-== README
+Focus on:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Player values i.e. Salary divided by aggregated projected points
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There will be many ways to slice this later, but this is the most basic useful 
+functionality so get this working first.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Possible additional structure:
+
+Player has a team
+
+Team is home or away
+
+team has a game
+
+team has opponent through game
+
+game has gametimes
+
+game has over/under
+
+game has spread
+
+projected points and most stats for game need to clear tuesday morning
+
+opponent teams have stats against particular positions that could be used to weight projections
+
+points given to...WR for instance
