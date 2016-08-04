@@ -1,9 +1,12 @@
 Focus on:
 
-Player values i.e. Salary divided by aggregated projected points
+get a list of players sorted by values i.e. Salary divided by aggregated projected points
+add ways to tweak by ownership next
 
 There will be many ways to slice this later, but this is the most basic useful 
 functionality so get this working first.
+
+____
 
 
 Possible additional structure:
@@ -27,3 +30,10 @@ projected points and most stats for game need to clear tuesday morning
 opponent teams have stats against particular positions that could be used to weight projections
 
 points given to...WR for instance
+
+
+
+
+-----
+
+much later consider ways to track performance
