@@ -1,0 +1,13 @@
+Import Fanduel Data:
+
+<%= form_tag fdimport_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<br>
+<br>
+
+<div class = 'message'>
+<%= flash[:message] if flash[:message] %>
+</div>

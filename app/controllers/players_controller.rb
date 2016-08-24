@@ -4,4 +4,7 @@ class PlayersController < ApplicationController
     @players = Player.all_by_ave_value
   end
 
+  def show
+  end
+
 end

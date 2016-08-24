@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  
+  root 'players#index'
   resources :players
+
+  get '/fdupload' => 'data#fd_upload'
+  post '/fdimport' => 'data#fd_import'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
