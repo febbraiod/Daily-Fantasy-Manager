@@ -21,24 +21,10 @@ class Player < ActiveRecord::Base
       player_hash.keys.each { |k| player_hash[ header_map[k] ] = player_hash.delete(k) if header_map[k] }
       player_hash["name"] =  "#{player_hash['first_name']} #{player_hash['last_name']}"
       player_hash = player_hash.except("first_name", "last_name", "played", "", "game", "id", "injury_details")
-      binding.pry
       p = Player.find_or_create_by(name: player_hash[:name])
       p.update(player_hash)
-      binding.pry
-      # p.save
+      p.save
     end
   end
 
 end
-
- # "position"=>"WR",
- # "first_name"=>"Antonio",
- # "last_name"=>"Brown",
- # "fppg"=>"20.012500762939453",
- # "played"=>"16",
- # "salary"=>"9300",
- # "game"=>"PIT@WAS",
- # "team"=>"PIT",
- # "opponent"=>"WAS",
- # "injury_indicator"=>"",
- # "injury_details"=>"",
