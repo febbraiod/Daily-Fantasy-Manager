@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get '/fdupload' => 'data#fd_upload'
   post '/fdimport' => 'data#fd_import'
+
+  get '/yahoo_proj_upload' => 'data#yahoo_proj_upload'
+  post '/yahoo_proj_import' => 'data#yahoo_proj_import'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

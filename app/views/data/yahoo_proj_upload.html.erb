@@ -1,0 +1,13 @@
+<h1>Import Yahoo Projections:</h1>
+
+<%= form_tag yahoo_proj_import_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<br>
+<br>
+
+<div class = 'message'>
+  <%= flash[:message] if flash[:message] %>
+</div>

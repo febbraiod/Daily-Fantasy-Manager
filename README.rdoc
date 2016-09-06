@@ -1,10 +1,7 @@
 Focus on:
 
-get a list of players sorted by values i.e. Salary divided by aggregated projected points
-add ways to tweak by ownership next
+the value of a player is “determined not by the number of points he scores, but by how much he outscores his peers at his particular position.”
 
-There will be many ways to slice this later, but this is the most basic useful 
-functionality so get this working first.
 
 ____
 
