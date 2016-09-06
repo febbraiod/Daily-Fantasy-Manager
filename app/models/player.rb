@@ -11,10 +11,10 @@ class Player < ActiveRecord::Base
   end
 
   def player_value
-    if self.projected_points.reduce(0, :+) == 0
+    if self.projected_points.length == 0 || self.projected_points.reduce(0, :+)/self.projected_points.length < 5
       0
     else
-      self.salary/self.projected_points.reduce(0, :+)
+      self.salary/(self.projected_points.reduce(0, :+)/self.projected_points.length)
     end
   end
 

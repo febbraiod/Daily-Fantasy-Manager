@@ -1,3 +1,18 @@
-<% @players.each do |p| %>
-  <p><%= p.name %> Salary: <%= p.salary %> Value: <%= p.player_value%> <%=p.projected_points%> </p>
-<% end %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Position</th> 
+      <th>Salary</th>
+      <th>Value</th>
+      <th>Points Arr</th>
+    </tr>
+    <% @players.each do |p| %>
+      <tr>
+        <td><%=p.name%></td>
+        <td><%=p.position%></td> 
+        <td><%=p.salary%></td>
+        <td><%=p.player_value%></td>
+        <td><%=p.projected_points%></td>
+      </tr>
+    <% end %>
+  </table>
