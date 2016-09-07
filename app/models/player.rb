@@ -42,16 +42,52 @@ class Player < ActiveRecord::Base
   def self.yahoo_proj_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
       p = Player.find_by(name: row['playername'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['playername']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['playername']}%")[0] 
+          end 
+        end
+      p['projected_points'] << row['points'] unless p == nil
+      p.save unless p == nil
+    end
+  end
+
+  def self.fantasypros_proj_import(file)
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      player_name = row["Player "].split(' (')[0]
+      p = Player.find_by(name: player_name)
+        if p == nil
+          if Player.where("name LIKE ?", "%#{player_name}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{player_name}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{player_name}%")[0] 
+          end 
+        end
+      p.projected_points << row[" Projected Points "].to_i unless p == nil
+      p.save unless p == nil
+    end
+  end
+
+  def self.rotoworld_proj_import(file)
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      p = Player.find_by(name: row['player'])
       if p == nil
-        if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
+        if Player.where("name LIKE ?", "%#{row['player']}%").length > 1
           binding.pry
-        elsif Player.where("name LIKE ?", "%#{row['playername']}%").length < 1
+        elsif Player.where("name LIKE ?", "%#{row['player']}%").length < 1
+          binding.pry
           #ignore player not on fan duel
         else
-          p = Player.where("name LIKE ?", "%#{row['playername']}%")[0] 
+          p = Player.where("name LIKE ?", "%#{row['player']}%")[0] 
         end 
       end
-      p['projected_points'] << row['points'] unless p == nil
+      p['projected_points'] << row['fpts'] unless p == nil
       p.save unless p == nil
     end
   end

@@ -1,7 +1,8 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>Position</th> 
+      <th>Position</th>
+      <th>Ave Points</th> 
       <th>Salary</th>
       <th>Value</th>
       <th>Points Arr</th>
@@ -9,7 +10,8 @@
     <% @players.each do |p| %>
       <tr>
         <td><%=p.name%></td>
-        <td><%=p.position%></td> 
+        <td><%=p.position%></td>
+        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points%></td>
