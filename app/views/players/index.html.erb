@@ -12,7 +12,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
@@ -39,7 +39,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
@@ -66,7 +66,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
@@ -93,7 +93,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
@@ -120,7 +120,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
@@ -147,7 +147,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.projected_points.reduce(0, :+)/p.projected_points.length unless p.projected_points.length == 0 %></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>  
         <td><%=p.salary%></td>
         <td><%=p.player_value%></td>
         <td><%=p.projected_points.max%></td>
