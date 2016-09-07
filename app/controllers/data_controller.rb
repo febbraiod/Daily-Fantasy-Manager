@@ -10,7 +10,7 @@ class DataController < ApplicationController
     redirect_to players_path
   end
 
-  def yahoo_proj_upload
+  def proj_upload
   end
 
   def yahoo_proj_import

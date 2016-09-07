@@ -6,8 +6,8 @@ class Player < ActiveRecord::Base
     players = self.all
     players = players.sort_by {|p|
       p.player_value
-    }.reverse
-    players
+    }
+    players.reject {|p| p.projected_points.length == 0 || p.projected_points.reduce(0, :+)/p.projected_points.length < 5}
   end
 
   def player_value
@@ -81,7 +81,6 @@ class Player < ActiveRecord::Base
         if Player.where("name LIKE ?", "%#{row['player']}%").length > 1
           binding.pry
         elsif Player.where("name LIKE ?", "%#{row['player']}%").length < 1
-          binding.pry
           #ignore player not on fan duel
         else
           p = Player.where("name LIKE ?", "%#{row['player']}%")[0] 
@@ -105,8 +104,8 @@ class Player < ActiveRecord::Base
           end 
         end
       p['projected_points'] << row['points'] unless p == nil
-      p['projected_points'] << row['upper'] + 'u' unless p == nil
-      p['projected_points'] << row['lower'] + 'l' unless p == nil
+      p['projected_points'] << row['upper'] unless p == nil
+      p['projected_points'] << row['lower'] unless p == nil
       p.save unless p == nil
     end
   end
