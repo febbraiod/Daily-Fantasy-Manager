@@ -7,14 +7,14 @@ class Player < ActiveRecord::Base
     players = players.sort_by {|p|
       p.player_value
     }
-    players.reject {|p| p.projected_points.length == 0 || p.projected_points.reduce(0, :+)/p.projected_points.length < 5}
+    players.reject {|p| p.projected_points.length == 0 || average_points(p.projected_points) < 5}
   end
 
   def player_value
-    if self.projected_points.length == 0 || self.projected_points.reduce(0, :+)/self.projected_points.length < 5
+    if self.projected_points.length == 0 || Player.average_points(self.projected_points) < 5
       0
     else
-      self.salary/(self.projected_points.reduce(0, :+)/self.projected_points.length)
+      self.salary/Player.average_points(self.projected_points)
     end
   end
 
