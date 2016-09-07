@@ -1,12 +1,12 @@
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @qbs.each do |p| %>
       <tr>
@@ -14,7 +14,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
@@ -27,13 +27,13 @@
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @wrs.each do |p| %>
       <tr>
@@ -41,7 +41,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
@@ -54,13 +54,13 @@
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @rbs.each do |p| %>
       <tr>
@@ -68,7 +68,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
@@ -81,13 +81,13 @@
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @tes.each do |p| %>
       <tr>
@@ -95,7 +95,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
@@ -108,13 +108,13 @@
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @ds.each do |p| %>
       <tr>
@@ -122,7 +122,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
@@ -135,13 +135,13 @@
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Ave Points</th> 
-      <th>Salary</th>
-      <th>CPP</th>
-      <th>Ceiling</th>
-      <th>Floor</th>
+      <th align="left">Name</th>
+      <th align="left">Position</th>
+      <th align="left">Ave Points</th> 
+      <th align="left">Salary</th>
+      <th align="left">CPP</th>
+      <th align="left">Ceiling</th>
+      <th align="left">Floor</th>
     </tr>
     <% @ks.each do |p| %>
       <tr>
@@ -149,7 +149,7 @@
         <td><%=p.position%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>  
         <td><%=p.salary%></td>
-        <td><%=p.player_value%></td>
+        <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
         <td><%=p.projected_points.min%></td>
       </tr>
