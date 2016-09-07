@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   validates :name, presence: true
 
-
+  #get players to display
   def self.all_by_ave_value
     players = self.all
     players = players.sort_by {|p|
@@ -18,6 +18,34 @@ class Player < ActiveRecord::Base
     end
   end
 
+  #benchmarks:
+
+  def self.ave_qb(qbs)
+    ave_qb = {}
+    total_points = 0
+    total_sal = 0
+    total_cpp = 0
+    total_ceil = 0
+    total_floor = 0
+
+    qbs.each do |q|
+      total_points += average_points(q.projected_points)
+      total_sal += q.salary
+      total_cpp += q.player_value
+      total_ceil += q.projected_points.max
+      total_floor += q.projected_points.min
+    end
+
+    ave_qb[:points] = total_points/qbs.length
+    ave_qb[:salary] = total_sal/qbs.length
+    ave_qb[:value] = total_cpp/qbs.length
+    ave_qb[:ceiling] = total_ceil/qbs.length
+    ave_qb[:floor] = total_floor/qbs.length
+
+    ave_qb
+  end
+
+  #import methods:
   def self.fd_import(file)
     CSV.foreach(file.tempfile, headers: true, :header_converters => lambda { |h| h.try(:downcase).tr(" ", "_") }) do |row|
       player_hash = create_player_hash(row)
@@ -110,6 +138,11 @@ class Player < ActiveRecord::Base
     end
   end
 
+#helpers:
+
+  def self.average_points(arr)
+    arr.reduce(0, :+)/arr.length
+  end
 
 
 end

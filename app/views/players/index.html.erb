@@ -8,6 +8,15 @@
       <th align="left">Ceiling</th>
       <th align="left">Floor</th>
     </tr>
+    <tr>
+        <td class='benchmark'>Ave QB</td>
+        <td class='benchmark'>QB</td>
+        <td class='benchmark'><%='%.2f' % (@ave_qb[:points]) %></td> 
+        <td class='benchmark'><%=@ave_qb[:salary]%></td>
+        <td class='benchmark'><%='%.2f' % (@ave_qb[:value])%></td>
+        <td class='benchmark'><%=@ave_qb[:ceiling]%></td>
+        <td class='benchmark'><%=@ave_qb[:floor]%></td>
+      </tr>
     <% @qbs.each do |p| %>
       <tr>
         <td><%=p.name%></td>
