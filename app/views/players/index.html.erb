@@ -17,6 +17,15 @@
       <td class='benchmark'><%='%.2f' % @ave_qb[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_qb[:floor]%></td>
     </tr>
+    <tr>
+      <td class='benchmark'>Top 10 QB</td>
+      <td class='benchmark'>QB</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_qb[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_qb[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_qb[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_qb[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_qb[:floor]%></td>
+    </tr>
     <% @qbs.each do |p| %>
       <tr>
         <td><%=p.name%></td>
@@ -52,6 +61,15 @@
       <td class='benchmark'><%='%.2f' % (@ave_wr[:value])%></td>
       <td class='benchmark'><%='%.2f' % @ave_wr[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_wr[:floor]%></td>
+    </tr>
+    <tr>
+      <td class='benchmark'>Top 10 WR</td>
+      <td class='benchmark'>WR</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_wr[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_wr[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_wr[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_wr[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_wr[:floor]%></td>
     </tr>
     <% @wrs.each do |p| %>
       <tr>
@@ -89,6 +107,15 @@
       <td class='benchmark'><%='%.2f' % @ave_rb[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_rb[:floor]%></td>
     </tr>
+    <tr>
+      <td class='benchmark'>Top 10 RB</td>
+      <td class='benchmark'>RB</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_rb[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_rb[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_rb[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_rb[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_rb[:floor]%></td>
+    </tr>
     <% @rbs.each do |p| %>
       <tr>
         <td><%=p.name%></td>
@@ -124,6 +151,15 @@
       <td class='benchmark'><%='%.2f' % (@ave_te[:value])%></td>
       <td class='benchmark'><%='%.2f' % @ave_te[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_te[:floor]%></td>
+    </tr>
+    <tr>
+      <td class='benchmark'>Top 10 TE</td>
+      <td class='benchmark'>TE</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_te[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_te[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_te[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_te[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_te[:floor]%></td>
     </tr>
     <% @tes.each do |p| %>
       <tr>
@@ -161,6 +197,15 @@
       <td class='benchmark'><%='%.2f' % @ave_d[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_d[:floor]%></td>
     </tr>
+    <tr>
+      <td class='benchmark'>Top 10 DEF</td>
+      <td class='benchmark'>DEF</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_d[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_d[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_d[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_d[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_d[:floor]%></td>
+    </tr>
     <% @ds.each do |p| %>
       <tr>
         <td><%=p.name%></td>
@@ -196,6 +241,15 @@
       <td class='benchmark'><%='%.2f' % (@ave_k[:value])%></td>
       <td class='benchmark'><%='%.2f' % @ave_k[:ceiling]%></td>
       <td class='benchmark'><%='%.2f' % @ave_k[:floor]%></td>
+    </tr>
+    <tr>
+      <td class='benchmark'>Top 10 K</td>
+      <td class='benchmark'>K</td>
+      <td class='benchmark'><%='%.2f' % (@top_10_k[:points]) %></td> 
+      <td class='benchmark'><%=@top_10_k[:salary]%></td>
+      <td class='benchmark'><%='%.2f' % (@top_10_k[:value])%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_k[:ceiling]%></td>
+      <td class='benchmark'><%='%.2f' % @top_10_k[:floor]%></td>
     </tr>
     <% @ks.each do |p| %>
       <tr>
