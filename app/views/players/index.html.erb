@@ -2,7 +2,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
-      <th align="left">Team</th>
+      <th align="left">Team v Opponent</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -34,7 +34,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td>
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (Player.average_points(p.projected_points)) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -85,7 +85,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td>
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -135,7 +135,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td>
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -186,7 +186,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td>
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -237,7 +237,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td>
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -288,7 +288,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%></td> 
+        <td><%=p.team%> v. <%=p.opponent%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
