@@ -2,6 +2,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -11,6 +12,7 @@
     <tr>
       <td class='benchmark'>Ave QB</td>
       <td class='benchmark'>QB</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_qb[:points]) %></td> 
       <td class='benchmark'><%=@ave_qb[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_qb[:value])%></td>
@@ -20,6 +22,7 @@
     <tr>
       <td class='benchmark'>Top 10 QB</td>
       <td class='benchmark'>QB</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_qb[:points]) %></td> 
       <td class='benchmark'><%=@top_10_qb[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_qb[:value])%></td>
@@ -30,6 +33,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
+        <td><%=p.team%></td>
         <td><%='%.2f' % (Player.average_points(p.projected_points)) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -47,6 +51,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -56,6 +61,7 @@
     <tr>
       <td class='benchmark'>Ave WR</td>
       <td class='benchmark'>WR</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_wr[:points]) %></td> 
       <td class='benchmark'><%=@ave_wr[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_wr[:value])%></td>
@@ -65,6 +71,7 @@
     <tr>
       <td class='benchmark'>Top 10 WR</td>
       <td class='benchmark'>WR</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_wr[:points]) %></td> 
       <td class='benchmark'><%=@top_10_wr[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_wr[:value])%></td>
@@ -75,7 +82,8 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
+        <td><%=p.team%></td>
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
@@ -92,6 +100,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -101,6 +110,7 @@
     <tr>
       <td class='benchmark'>Ave RB</td>
       <td class='benchmark'>RB</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_rb[:points]) %></td> 
       <td class='benchmark'><%=@ave_rb[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_rb[:value])%></td>
@@ -110,6 +120,7 @@
     <tr>
       <td class='benchmark'>Top 10 RB</td>
       <td class='benchmark'>RB</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_rb[:points]) %></td> 
       <td class='benchmark'><%=@top_10_rb[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_rb[:value])%></td>
@@ -120,7 +131,8 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
+        <td><%=p.team%></td>
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
@@ -137,6 +149,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -146,6 +159,7 @@
     <tr>
       <td class='benchmark'>Ave TE</td>
       <td class='benchmark'>TE</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_te[:points]) %></td> 
       <td class='benchmark'><%=@ave_te[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_te[:value])%></td>
@@ -155,6 +169,7 @@
     <tr>
       <td class='benchmark'>Top 10 TE</td>
       <td class='benchmark'>TE</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_te[:points]) %></td> 
       <td class='benchmark'><%=@top_10_te[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_te[:value])%></td>
@@ -165,6 +180,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
+        <td><%=p.team%></td>
         <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -182,6 +198,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -191,6 +208,7 @@
     <tr>
       <td class='benchmark'>Ave DEF</td>
       <td class='benchmark'>DEF</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_d[:points]) %></td> 
       <td class='benchmark'><%=@ave_d[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_d[:value])%></td>
@@ -200,6 +218,7 @@
     <tr>
       <td class='benchmark'>Top 10 DEF</td>
       <td class='benchmark'>DEF</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_d[:points]) %></td> 
       <td class='benchmark'><%=@top_10_d[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_d[:value])%></td>
@@ -210,7 +229,8 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td> 
+        <td><%=p.team%></td>
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
@@ -227,6 +247,7 @@
     <tr>
       <th align="left">Name</th>
       <th align="left">Position</th>
+      <th align="left">Team</th>
       <th align="left">Ave Points</th> 
       <th align="left">Salary</th>
       <th align="left">CPP</th>
@@ -236,6 +257,7 @@
     <tr>
       <td class='benchmark'>Ave K</td>
       <td class='benchmark'>K</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@ave_k[:points]) %></td> 
       <td class='benchmark'><%=@ave_k[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@ave_k[:value])%></td>
@@ -245,6 +267,7 @@
     <tr>
       <td class='benchmark'>Top 10 K</td>
       <td class='benchmark'>K</td>
+      <td class='benchmark'>all</td>
       <td class='benchmark'><%='%.2f' % (@top_10_k[:points]) %></td> 
       <td class='benchmark'><%=@top_10_k[:salary]%></td>
       <td class='benchmark'><%='%.2f' % (@top_10_k[:value])%></td>
@@ -255,7 +278,8 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>  
+        <td><%=p.team%></td> 
+        <td><%='%.2f' % (p.projected_points.reduce(0, :+)/p.projected_points.length) unless p.projected_points.length == 0 %></td>
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
         <td><%=p.projected_points.max%></td>
