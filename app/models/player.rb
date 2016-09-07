@@ -20,29 +20,29 @@ class Player < ActiveRecord::Base
 
   #benchmarks:
 
-  def self.ave_qb(qbs)
-    ave_qb = {}
+  def self.ave_player_at_pos(players)
+    ave_player = {}
     total_points = 0
     total_sal = 0
     total_cpp = 0
     total_ceil = 0
     total_floor = 0
 
-    qbs.each do |q|
-      total_points += average_points(q.projected_points)
-      total_sal += q.salary
-      total_cpp += q.player_value
-      total_ceil += q.projected_points.max
-      total_floor += q.projected_points.min
+    players.each do |p|
+      total_points += average_points(p.projected_points)
+      total_sal += p.salary
+      total_cpp += p.player_value
+      total_ceil += p.projected_points.max
+      total_floor += p.projected_points.min
     end
 
-    ave_qb[:points] = total_points/qbs.length
-    ave_qb[:salary] = total_sal/qbs.length
-    ave_qb[:value] = total_cpp/qbs.length
-    ave_qb[:ceiling] = total_ceil/qbs.length
-    ave_qb[:floor] = total_floor/qbs.length
+    ave_player[:points] = total_points/players.length
+    ave_player[:salary] = total_sal/players.length
+    ave_player[:value] = total_cpp/players.length
+    ave_player[:ceiling] = total_ceil/players.length
+    ave_player[:floor] = total_floor/players.length
 
-    ave_qb
+    ave_player
   end
 
   #import methods:
