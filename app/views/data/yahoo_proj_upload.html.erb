@@ -8,9 +8,9 @@
 <br>
 <br>
 
-<h1>Import FFA AVE Projections:</h1>
+<h1>Import FFA Projections:</h1>
 
-<%= form_tag fantasypros_proj_import_path, multipart: true do %>
+<%= form_tag fantasyanalytics_proj_import_path, multipart: true do %>
   <%= file_field_tag :file %><br>
   <%= submit_tag "Import CSV" %>
 <% end %>
@@ -21,6 +21,16 @@
 <h1>Import Roto OFF Projections:</h1>
 
 <%= form_tag rotoworld_proj_import_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<br>
+<br>
+
+<h1>Import Fantasy Analytics Projections:</h1>
+
+<%= form_tag fantasyanalytics_proj_import_path, multipart: true do %>
   <%= file_field_tag :file %><br>
   <%= submit_tag "Import CSV" %>
 <% end %>

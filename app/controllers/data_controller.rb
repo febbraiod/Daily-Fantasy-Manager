@@ -31,4 +31,10 @@ class DataController < ApplicationController
     redirect_to players_path
   end
 
+  def fantasyanalytics_proj_import
+    Player.fantasyanalytics_proj_import(params[:file])
+    flash[:message] = "File Uploaded"
+    redirect_to players_path
+  end
+
 end

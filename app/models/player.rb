@@ -92,6 +92,27 @@ class Player < ActiveRecord::Base
     end
   end
 
+    def self.fantasyanalytics_proj_import(file)
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      p = Player.find_by(name: row['playername'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['playername']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['playername']}%")[0] 
+          end 
+        end
+      p['projected_points'] << row['points'] unless p == nil
+      p['projected_points'] << row['upper'] + 'u' unless p == nil
+      p['projected_points'] << row['lower'] + 'l' unless p == nil
+      p.save unless p == nil
+    end
+  end
+
+
+
 end
 
 
