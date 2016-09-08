@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   post '/fantasypros_proj_import' => 'data#fantasypros_proj_import'
   post '/rotoworld_proj_import' => 'data#rotoworld_proj_import'
   post '/fantasyanalytics_proj_import' => 'data#fantasyanalytics_proj_import'
+
+  get 'csv_output' => 'players#csv_output'
   
 end

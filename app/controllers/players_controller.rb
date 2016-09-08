@@ -1,7 +1,8 @@
 class PlayersController < ApplicationController
+  require 'csv'
 
   def index
-    players = Player.all_by_ave_value
+    players = Player.all_by_ave_value.reverse
     @qbs = players.select {|p| p.position == 'QB'}
       @ave_qb = Player.ave_player_at_pos(@qbs)
       @top_10_qb = Player.ave_player_at_pos(@qbs.sort_by{ |p| p.salary}.last(10))
@@ -23,6 +24,16 @@ class PlayersController < ApplicationController
   end
 
   def show
+  end
+
+  def csv_output
+    @output = Player.all_by_ave_value.reverse
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"dons_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
 end

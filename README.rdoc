@@ -1,7 +1,9 @@
 Focus on:
 
-the value of a player is “determined not by the number of points he scores, but by how much he outscores his peers at his particular position.”
+the value of a player is “determined not by the number of points he scores, 
+but by how much he outscores his peers at his particular position.”
 
+need to make tables sortable(React?)
 
 ____
 
@@ -22,11 +24,13 @@ game has over/under
 
 game has spread
 
-projected points and most stats for game need to clear tuesday morning
+projected points and most stats for game need to clear tuesday morning - just delete database for now.
 
 opponent teams have stats against particular positions that could be used to weight projections
+points given to...WR for instance: will be mouch more reliable later in season...maybe start week 4
 
-points given to...WR for instance
+in addition to weighting how about generating custom projections from these factors and vegas props in
+conjunction with raw stats from FFA
 
 
 

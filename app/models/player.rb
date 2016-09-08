@@ -5,7 +5,11 @@ class Player < ActiveRecord::Base
   def self.all_by_ave_value
     players = self.all
     players = players.sort_by {|p|
-      p.player_value
+      if p.projected_points.length == 0
+        0
+      else
+        average_points(p.projected_points)
+      end
     }
     players.reject {|p| p.projected_points.length == 0 || average_points(p.projected_points) < 5}
   end

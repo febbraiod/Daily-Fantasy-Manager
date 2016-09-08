@@ -1,0 +1,3 @@
+<%- @output.each do |player| -%>
+<%= CSV.generate_line([player.name, Player.average_points(player.projected_points)]) -%>
+<%- end -%>
