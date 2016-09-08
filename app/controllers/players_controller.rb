@@ -36,4 +36,24 @@ class PlayersController < ApplicationController
     end
   end
 
+  def ceil_output
+    @output = Player.all_by_ave_value.reverse
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"ceil_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+  def floor_output
+    @output = Player.all_by_ave_value.reverse
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"floor_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
 end

@@ -1,4 +1,8 @@
-  <div><%=link_to 'download projections', csv_output_path  + ".csv"%></div>  
+  <div id='csv_links'>
+    <%=link_to 'download ave projections', csv_output_path  + ".csv"%><br>
+    <%=link_to 'download ceiling projections', ceil_output_path  + ".csv"%><br>
+    <%=link_to 'download floor projections', floor_output_path  + ".csv"%><br>
+  </div>  
 
   <table>
     <tr>

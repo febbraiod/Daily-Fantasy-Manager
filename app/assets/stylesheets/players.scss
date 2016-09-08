@@ -16,3 +16,15 @@ td {
   font-style: italic;
   color: red;
 }
+
+#csv_links{
+  width: 400px;
+  border: solid 1px;
+  border-color: red;
+  position: fixed;
+  right:100px;
+  top: 150px;
+  padding: 30px;
+  line-height: 2em;
+  font-family: helvetica;
+}

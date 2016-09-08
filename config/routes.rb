@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   post '/fantasyanalytics_proj_import' => 'data#fantasyanalytics_proj_import'
 
   get 'csv_output' => 'players#csv_output'
+  get 'ceil_output' => 'players#ceil_output'
+  get 'floor_output' => 'players#floor_output'
   
 end
