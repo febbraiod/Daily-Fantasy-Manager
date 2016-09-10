@@ -5,6 +5,10 @@ but by how much he outscores his peers at his particular position.”
 
 need to make tables sortable(React?)
 
+javascript tables salary x-axis project points y-axis
+
+play 10% GPP 40% 50/50 40% double ups
+
 ____
 
 

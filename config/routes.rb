@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post '/rotoworld_proj_import' => 'data#rotoworld_proj_import'
   post '/fantasyanalytics_proj_import' => 'data#fantasyanalytics_proj_import'
 
+  post '/ownership_import' => 'data#ownership_import'
+
   get 'csv_output' => 'players#csv_output'
   get 'ceil_output' => 'players#ceil_output'
   get 'floor_output' => 'players#floor_output'

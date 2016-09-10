@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824195921) do
+ActiveRecord::Schema.define(version: 20160910155750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160824195921) do
     t.string  "name"
     t.integer "salary"
     t.float   "projected_points", default: [], array: true
-    t.integer "ownership"
+    t.float   "ownership"
     t.float   "averageppg"
     t.string  "team"
     t.string  "opponent"

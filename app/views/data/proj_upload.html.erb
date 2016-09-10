@@ -18,7 +18,7 @@
 <br>
 <br>
 
-<h1>Import Roto OFF Projections:</h1>
+<h1>Import Roto Projections:</h1>
 
 <%= form_tag rotoworld_proj_import_path, multipart: true do %>
   <%= file_field_tag :file %><br>
@@ -37,3 +37,12 @@
 
 <br>
 <br>
+
+<hr>
+
+<h1>Import Ownership Projections:</h1>
+
+<%= form_tag ownership_import_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>

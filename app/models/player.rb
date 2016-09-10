@@ -109,21 +109,21 @@ class Player < ActiveRecord::Base
   def self.rotoworld_proj_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
       p = Player.find_by(name: row['player'])
-      if p == nil
-        if Player.where("name LIKE ?", "%#{row['player']}%").length > 1
-          binding.pry
-        elsif Player.where("name LIKE ?", "%#{row['player']}%").length < 1
-          #ignore player not on fan duel
-        else
-          p = Player.where("name LIKE ?", "%#{row['player']}%")[0] 
-        end 
-      end
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['player']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['player']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['player']}%")[0] 
+          end 
+        end
       p['projected_points'] << row['fpts'] unless p == nil
       p.save unless p == nil
     end
   end
 
-    def self.fantasyanalytics_proj_import(file)
+  def self.fantasyanalytics_proj_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
       p = Player.find_by(name: row['playername'])
         if p == nil
@@ -138,6 +138,23 @@ class Player < ActiveRecord::Base
       p['projected_points'] << row['points'] unless p == nil
       p['projected_points'] << row['upper'] unless p == nil
       p['projected_points'] << row['lower'] unless p == nil
+      p.save unless p == nil
+    end
+  end
+
+  def self.ownership_import(file)
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      p = Player.find_by(name: row['Player'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['Player']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['Player']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['Player']}%")[0] 
+          end 
+        end
+      p['ownership'] = row['Ownership'].chomp('%').to_f unless p == nil
       p.save unless p == nil
     end
   end
