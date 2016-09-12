@@ -102,6 +102,7 @@ class Player < ActiveRecord::Base
           end 
         end
       p.projected_points << row[" Projected Points "].to_i unless p == nil
+      p.slate = setSlate(row[" Kickoff "]) unless p == nil
       p.save unless p == nil
     end
   end
@@ -163,6 +164,21 @@ class Player < ActiveRecord::Base
 
   def self.average_points(arr)
     arr.reduce(0, :+)/arr.length
+  end
+
+  def self.setSlate(time)
+    if time[0,3].downcase == 'mon'
+      5
+    elsif time[0,5].downcase == 'sun 8'
+      4
+    elsif time[0,5].downcase == 'sun 4'
+      3
+    elsif time[0,5].downcase == 'sun 1'
+      2
+    else
+      1
+    end
+
   end
 
 
