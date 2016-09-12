@@ -3,11 +3,19 @@ Focus on:
 the value of a player is “determined not by the number of points he scores, 
 but by how much he outscores his peers at his particular position.”
 
+add drop off(each players score minus the score of the fifth next player in terms of ave projection) see above
+
+add button to narrow down field by slates
+
 need to make tables sortable(React?)
 
 javascript tables salary x-axis project points y-axis
 
 play 10% GPP 40% 50/50 40% double ups
+
+add raw stat crunch with form to add personal adjustment. This should produce a FP proj and add it to the players array - use a new controller for this. StatsCalc
+
+think about a contarian rating for GPP
 
 ____
 
