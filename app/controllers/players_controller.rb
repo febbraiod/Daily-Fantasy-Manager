@@ -23,6 +23,10 @@ class PlayersController < ApplicationController
       @top_10_k = Player.ave_player_at_pos(@ks.sort_by{ |p| p.salary}.last(10))
   end
 
+  def react_index
+    @players = Player.all_by_ave_value
+  end
+
   def show
   end
 

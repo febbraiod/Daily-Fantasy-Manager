@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'players#index'
   resources :players
 
+  get '/react_players' => 'players#react_index'
+
   get '/fdupload' => 'data#fd_upload'
   post '/fdimport' => 'data#fd_import'
 
