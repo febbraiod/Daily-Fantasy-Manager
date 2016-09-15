@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   require 'csv'
 
   def index
-    players = Player.all_by_ave_value.sort_by{|p| p.ownership || p.salary}
+    players = Player.all_by_ave_value.reverse
     @qbs = players.select {|p| p.position == 'QB'}
       @ave_qb = Player.ave_player_at_pos(@qbs)
       @top_10_qb = Player.ave_player_at_pos(@qbs.sort_by{ |p| p.salary}.last(10))
@@ -21,6 +21,7 @@ class PlayersController < ApplicationController
     @ks = players.select {|p| p.position == 'K'}
       @ave_k = Player.ave_player_at_pos(@ks)
       @top_10_k = Player.ave_player_at_pos(@ks.sort_by{ |p| p.salary}.last(10))
+    Player.all_players_dropoff(@qbs,@wrs,@rbs,@tes,@ks,@ds)
   end
 
   def show
