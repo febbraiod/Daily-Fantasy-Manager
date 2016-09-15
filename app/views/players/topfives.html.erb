@@ -1,0 +1,7 @@
+<p><%= @top_5s_matrix %></p>
+
+<h5>
+  <%@counts.each do |p, v| %>
+    <%="#{p.name} - #{v}, "%>
+  <%end%>
+</h5>

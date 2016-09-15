@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get 'csv_output' => 'players#csv_output'
   get 'ceil_output' => 'players#ceil_output'
   get 'floor_output' => 'players#floor_output'
+
+  get '/topfives' => 'players#topfives'
   
 end
