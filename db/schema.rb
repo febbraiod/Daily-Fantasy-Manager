@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912212834) do
+ActiveRecord::Schema.define(version: 20160914225330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20160912212834) do
     t.string  "position"
     t.integer "slate"
     t.float   "custom_proj"
+    t.float   "dropoff"
+    t.float   "cap"
+    t.float   "dropoff_5"
+    t.float   "cap_5"
   end
 
 end

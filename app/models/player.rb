@@ -181,6 +181,26 @@ class Player < ActiveRecord::Base
 
   end
 
+  def self.player_dropoff
+    # subtract players ave point from the 1st next players average points
+    # calculate the difference in salary
+    # you can calculate the cost of the addition points (CAP) by dividing those point by the difference in salary.
+    # AB - 30 - 9100 cpp 303 cap 400
+    # JJ - 29 - 8700
+
+    # dropoff cap dropoff_5 cap_5
+    players = Player.all.reject {|p| p.projected_points.length == 0 || average_points(p.projected_points) < 5}
+    players.sort_by!{|p| Player.average_points(p.projected_points)}.reverse!
+    
+    players.each_with_index do |p, i|
+      p.dropoff = average_points(p.projected_points) - average_points(players[i+1].projected_points) unless !players[i+1]
+      p.cap =  (p.salary - players[i+1].salary)/p.dropoff unless !p.dropoff
+      p.dropoff_5 = average_points(p.projected_points) - average_points(players[i+5].projected_points) unless !players[i+5]
+      p.cap =  (p.salary - players[i+5].salary)/p.dropoff unless !p.dropoff_5
+    end
+    binding.pry
+  end
+
 
 end
 
