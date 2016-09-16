@@ -181,6 +181,32 @@ class Player < ActiveRecord::Base
            tops_at_pos(tes),
            tops_at_pos(ds),
            tops_at_pos(ks)]
+
+    top5_details(arr)       
+  end
+
+  def self.top5_details(matrix)
+    details_obj = {}
+    positions = ['QB','RB','WR','TE','D','K']
+    cats = ['Top Ave Projection', 'Top Ave Value', 'Top Ceiling', 'Top floor', 
+            'Top Dropoff', 'Top Cost Per Addition Point', 'Top DO to 5th player', 'Top CAP to 5th Player' ]
+
+    i = 0
+    j = 0
+    matrix.each do |pos_arr|
+      details_obj[positions[i]] = {}
+        pos_arr.each do |top5_cat|
+          cat = cats[j]
+          details_obj[positions[i]][cat] = []
+          top5_cat.each do |player|
+            details_obj[positions[i]][cat] << player.name
+          end
+          j += 1
+        end
+      j = 0  
+      i += 1
+    end
+    details_obj
   end
 
   def self.top_counts(matrix)
