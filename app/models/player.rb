@@ -180,14 +180,12 @@ class Player < ActiveRecord::Base
            tops_at_pos(rbs),
            tops_at_pos(tes),
            tops_at_pos(ds),
-           tops_at_pos(ks)]
-
-    top5_details(arr)       
+           tops_at_pos(ks)]     
   end
 
   def self.top5_details(matrix)
     details_obj = {}
-    positions = ['QB','RB','WR','TE','D','K']
+    positions = ['QB','WR','RB','TE','D','K']
     cats = ['Top Ave Projection', 'Top Ave Value', 'Top Ceiling', 'Top floor', 
             'Top Dropoff', 'Top Cost Per Addition Point', 'Top DO to 5th player', 'Top CAP to 5th Player' ]
 

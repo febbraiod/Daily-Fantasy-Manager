@@ -13,5 +13,16 @@
 <br>
 
 
-<%@top_5s_matrix.each do |pos_arr|%>
+<%@top_5s_details.each do |pos, top5_cats|%>
+  <h3><%=pos%></h3>
+  <table>
+    <%top5_cats.each do |cat, players|%>
+      <th style='text-align: left;'><%=cat%></th>
+        <tr>
+          <%players.each do |p|%>
+            <td><%=p%></td>
+          <%end%>
+        </tr>
+    <%end%>
+  </table>
 <%end%>

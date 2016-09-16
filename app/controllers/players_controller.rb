@@ -28,9 +28,9 @@ class PlayersController < ApplicationController
   end
 
   def topfives
-    @top_5s_matrix = Player.top_5s
-    # @counts = Player.top_counts(@top_5s_matrix)
-    binding.pry
+    top_5s_matrix = Player.top_5s
+    @top_5s_details = Player.top5_details(top_5s_matrix)
+    @counts = Player.top_counts(top_5s_matrix)
   end
 
   def csv_output
