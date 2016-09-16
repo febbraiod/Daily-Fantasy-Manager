@@ -29,7 +29,7 @@ class PlayersController < ApplicationController
 
   def topfives
     @top_5s_matrix = Player.top_5s
-    @counts = Player.top_counts(@top_5s_matrix.flatten)
+    @counts = Player.top_counts(@top_5s_matrix)
   end
 
   def csv_output

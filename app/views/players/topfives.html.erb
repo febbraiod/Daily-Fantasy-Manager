@@ -1,7 +1,16 @@
-<p><%= @top_5s_matrix %></p>
+<table style="width: 100%;">
+<%@counts.each do |position, players| %>
+  <th><%="#{position}"%></th>
+  <td>
+    <h5>
+      <%players.each do |player, top5count|%>
+        <%= player%> - <%=top5count%><br>
+      <%end%>
+    </h5>
+  </td>
+<%end%>
+</table>
+<br>
 
-<h5>
-  <%@counts.each do |p, v| %>
-    <%="#{p.name} - #{v}, "%>
-  <%end%>
-</h5>
+
+<p><%= @top_5s_matrix %></p>

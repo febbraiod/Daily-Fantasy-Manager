@@ -183,14 +183,21 @@ class Player < ActiveRecord::Base
            tops_at_pos(ks)]
   end
 
-  def self.top_counts(arr)
-    hash = Hash.new(0)
+  def self.top_counts(matrix)
+    result_obj = {}
 
-    arr.each do |v|
-      hash[v] += 1
+    matrix.each do |pos_arr|
+      pos_hash = Hash.new(0)
+        position = pos_arr[0][0].position
+        pos_arr.each do |top5_for_metric|
+            top5_for_metric.each do |p|
+              pos_hash[p.name] += 1
+            end
+        end
+      result_obj[position] = pos_hash
     end
 
-    hash.sort_by{|_key, value| value}.reverse
+    result_obj
   end
 
 #helpers:
