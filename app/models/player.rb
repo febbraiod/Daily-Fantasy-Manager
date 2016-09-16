@@ -1,13 +1,13 @@
 class Player < ActiveRecord::Base
   validates :name, presence: true
 
-  #get players to display
+  #get players to display:
+
   def self.by_ave_value(players)
     players = players.sort_by {|p|
       if p.projected_points.length == 0
         0
       else
-        # average_points(p.projected_points)
         p.player_value
       end
     }
@@ -52,7 +52,8 @@ class Player < ActiveRecord::Base
     ave_player
   end
 
-  #import methods:
+  #parsers for imports:
+
   def self.fd_import(file)
     CSV.foreach(file.tempfile, headers: true, :header_converters => lambda { |h| h.try(:downcase).tr(" ", "_") }) do |row|
       player_hash = create_player_hash(row)
@@ -174,66 +175,12 @@ class Player < ActiveRecord::Base
     ds = players.select{|p| p.position == 'D'}
     ks = players.select{|p| p.position == 'K'}
 
-    top_qb_ave_proj = Player.by_ave_points(qbs).first(5)
-    top_qb_ave_value = Player.by_ave_value(qbs).first(5)
-    top_qb_ceilings = top5_ceiling_helper(qbs)
-    top_qb_floors =  top5_floor_helper(qbs)
-    top_qb_dropoffs =  top5_dropoff_helper(qbs)
-    top_qb_cap =  top5_cap_helper(qbs)
-    top_qb_dropoffs_5 = top5_dropoff_5_helper(qbs)
-    top_qb_cap_5 = top5_cap_5_helper(qbs)
-
-    top_wr_ave_proj = Player.by_ave_points(wrs).first(5)
-    top_wr_ave_value =  Player.by_ave_value(wrs).reverse.first(5)
-    top_wr_ceilings = top5_ceiling_helper(wrs)
-    top_wr_floors =  top5_floor_helper(wrs)
-    top_wr_dropoffs =  top5_dropoff_helper(wrs)
-    top_wr_cap =  top5_cap_helper(wrs)
-    top_wr_dropoffs_5 = top5_dropoff_5_helper(wrs)
-    top_wr_cap_5 = top5_cap_5_helper(wrs)
-
-    top_rb_ave_proj = Player.by_ave_points(rbs).first(5)
-    top_rb_ave_value =  Player.by_ave_value(rbs).reverse.first(5)
-    top_rb_ceilings = top5_ceiling_helper(rbs)
-    top_rb_floors =  top5_floor_helper(rbs)
-    top_rb_dropoffs =  top5_dropoff_helper(rbs)
-    top_rb_cap =  top5_cap_helper(rbs)
-    top_rb_dropoffs_5 = top5_dropoff_5_helper(rbs)
-    top_rb_cap_5 = top5_cap_5_helper(rbs)
-
-    top_te_ave_proj = Player.by_ave_points(tes).first(5)
-    top_te_ave_value =  Player.by_ave_value(tes).reverse.first(5)
-    top_te_ceilings = top5_ceiling_helper(tes)
-    top_te_floors =  top5_floor_helper(tes)
-    top_te_dropoffs =  top5_dropoff_helper(tes)
-    top_te_cap =  top5_cap_helper(tes)
-    top_te_dropoffs_5 = top5_dropoff_5_helper(tes)
-    top_te_cap_5 = top5_cap_5_helper(tes)
-
-    top_d_ave_proj = Player.by_ave_points(ds).first(5)
-    top_d_ave_value =  Player.by_ave_value(ds).reverse.first(5)
-    top_d_ceilings = top5_ceiling_helper(ds)
-    top_d_floors =  top5_floor_helper(ds)
-    top_d_dropoffs =  top5_dropoff_helper(ds)
-    top_d_cap =  top5_cap_helper(ds)
-    top_d_dropoffs_5 = top5_dropoff_5_helper(ds)
-    top_d_cap_5 = top5_cap_5_helper(ds)
-
-    top_k_ave_proj = Player.by_ave_points(ks).first(5)
-    top_k_ave_value =  Player.by_ave_value(ks).reverse.first(5)
-    top_k_ceilings = top5_ceiling_helper(ks)
-    top_k_floors =  top5_floor_helper(ks)
-    top_k_dropoffs =  top5_dropoff_helper(ks)
-    top_k_cap =  top5_cap_helper(ks)
-    top_k_dropoffs_5 = top5_dropoff_5_helper(ks)
-    top_k_cap_5 = top5_cap_5_helper(ks)
-
-    arr = [[top_qb_ave_proj, top_qb_ave_value, top_qb_ceilings, top_qb_floors, top_qb_dropoffs, top_qb_cap, top_qb_dropoffs_5, top_qb_cap_5],
-           [top_wr_ave_proj, top_wr_ave_value, top_wr_ceilings, top_wr_floors, top_wr_dropoffs, top_wr_cap, top_wr_dropoffs_5, top_wr_cap_5],
-           [top_rb_ave_proj, top_rb_ave_value, top_rb_ceilings, top_rb_floors, top_rb_dropoffs, top_rb_cap, top_rb_dropoffs_5, top_rb_cap_5],
-           [top_te_ave_proj, top_te_ave_value, top_te_ceilings, top_te_floors, top_te_dropoffs, top_te_cap, top_te_dropoffs_5, top_te_cap_5],
-           [top_d_ave_proj, top_d_ave_value, top_d_ceilings, top_d_floors, top_d_dropoffs, top_d_cap, top_d_dropoffs_5, top_d_cap_5],
-           [top_k_ave_proj, top_k_ave_value, top_k_ceilings, top_k_floors, top_k_dropoffs, top_k_cap, top_k_dropoffs_5, top_k_cap_5]]
+    arr = [tops_at_pos(qbs),
+           tops_at_pos(wrs),
+           tops_at_pos(rbs),
+           tops_at_pos(tes),
+           tops_at_pos(ds),
+           tops_at_pos(ks)]
   end
 
   def self.top_counts(arr)
@@ -243,7 +190,7 @@ class Player < ActiveRecord::Base
       hash[v] += 1
     end
 
-    hash.sort_by {|_key, value| value}.reverse
+    hash.sort_by{|_key, value| value}.reverse
   end
 
 #helpers:
@@ -274,26 +221,17 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def self.create_player_dropoffs(players)
-    players = players.reject {|p| p.projected_points.length == 0 || average_points(p.projected_points) < 5}
-    players.sort_by!{|p| Player.average_points(p.projected_points)}.reverse!
-    
-    players.each_with_index do |p, i|
-      p.dropoff = average_points(p.projected_points) - average_points(players[i+1].projected_points) unless !players[i+1]
-      p.cap =  (p.salary - players[i+1].salary)/p.dropoff unless !players[i+1]
-      p.dropoff_5 = average_points(p.projected_points) - average_points(players[i+5].projected_points) unless !players[i+5]
-      p.cap_5 = (p.salary - players[i+5].salary)/p.dropoff_5 unless !players[i+5]
-      p.save
-    end
-  end
+  def self.tops_at_pos(players_at_pos)
+    top_ave_proj = Player.by_ave_points(players_at_pos).first(5)
+    top_ave_value = Player.by_ave_value(players_at_pos).first(5)
+    top_ceilings = top5_ceiling_helper(players_at_pos)
+    top_floors =  top5_floor_helper(players_at_pos)
+    top_dropoffs =  top5_dropoff_helper(players_at_pos)
+    top_cap =  top5_cap_helper(players_at_pos)
+    top_dropoffs_5 = top5_dropoff_5_helper(players_at_pos)
+    top_cap_5 = top5_cap_5_helper(players_at_pos)
 
-  def self.create_all_players_dropoffs(qbs,wrs,rbs,tes,ks,ds)
-    Player.create_player_dropoffs(qbs)
-    Player.create_player_dropoffs(wrs)
-    Player.create_player_dropoffs(rbs)
-    Player.create_player_dropoffs(tes)
-    Player.create_player_dropoffs(ks)
-    Player.create_player_dropoffs(ds)
+    [top_ave_proj, top_ave_value, top_ceilings, top_floors, top_dropoffs, top_cap, top_dropoffs_5, top_cap_5]
   end
 
   def self.top5_ceiling_helper(players)
@@ -319,6 +257,28 @@ class Player < ActiveRecord::Base
 
   def self.top5_cap_5_helper(players)
     players.sort_by{|p| p.cap_5 || 0}.first(5)
+  end
+
+  def self.create_player_dropoffs(players)
+    players = players.reject {|p| p.projected_points.length == 0 || average_points(p.projected_points) < 5}
+    players.sort_by!{|p| Player.average_points(p.projected_points)}.reverse!
+    
+    players.each_with_index do |p, i|
+      p.dropoff = average_points(p.projected_points) - average_points(players[i+1].projected_points) unless !players[i+1]
+      p.cap =  (p.salary - players[i+1].salary)/p.dropoff unless !players[i+1]
+      p.dropoff_5 = average_points(p.projected_points) - average_points(players[i+5].projected_points) unless !players[i+5]
+      p.cap_5 = (p.salary - players[i+5].salary)/p.dropoff_5 unless !players[i+5]
+      p.save
+    end
+  end
+
+  def self.create_all_players_dropoffs(qbs,wrs,rbs,tes,ks,ds)
+    Player.create_player_dropoffs(qbs)
+    Player.create_player_dropoffs(wrs)
+    Player.create_player_dropoffs(rbs)
+    Player.create_player_dropoffs(tes)
+    Player.create_player_dropoffs(ks)
+    Player.create_player_dropoffs(ds)
   end
 
 end

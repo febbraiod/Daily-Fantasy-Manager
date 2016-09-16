@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   require 'csv'
 
   def index
-    players = Player.by_ave_points(Player.all)
+    players = Player.by_ave_points(Player.all).sort_by {|p| p.projected_points.min}.reverse
     @qbs = players.select {|p| p.position == 'QB'}
       @ave_qb = Player.ave_player_at_pos(@qbs)
       @top_10_qb = Player.ave_player_at_pos(@qbs.sort_by{ |p| p.salary}.last(10))
@@ -33,7 +33,7 @@ class PlayersController < ApplicationController
   end
 
   def csv_output
-    @output = Player.all_by_ave_value.reverse
+    @output = Player.by_ave_points(Player.all)
     respond_to do |format|
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"dons_projections.csv\""
@@ -43,7 +43,7 @@ class PlayersController < ApplicationController
   end
 
   def ceil_output
-    @output = Player.all_by_ave_value.reverse
+    @output = Player.by_ave_points(Player.all)
     respond_to do |format|
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"ceil_projections.csv\""
@@ -53,7 +53,7 @@ class PlayersController < ApplicationController
   end
 
   def floor_output
-    @output = Player.all_by_ave_value.reverse
+    @output = Player.by_ave_points(Player.all)
     respond_to do |format|
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"floor_projections.csv\""
