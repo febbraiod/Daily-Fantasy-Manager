@@ -1,11 +1,11 @@
-class DataController < ApplicationController
-  require 'csv'
+class PlayerdataController < ApplicationController
+    require 'csv'
 
   def fd_upload
   end
 
   def fd_import
-    Player.fd_import(params[:file])
+    Playerdata.fd_import(params[:file])
     redirect_to players_path
   end
 
@@ -13,30 +13,36 @@ class DataController < ApplicationController
   end
 
   def yahoo_proj_import
-    Player.yahoo_proj_import(params[:file])
+    Playerdata.yahoo_proj_import(params[:file])
     redirect_to players_path
   end
 
   def fantasypros_proj_import
-    Player.fantasypros_proj_import(params[:file])
+    Playerdata.fantasypros_proj_import(params[:file])
     redirect_to players_path
   end
 
   def rotoworld_proj_import
-    Player.rotoworld_proj_import(params[:file])
+    Playerdata.rotoworld_proj_import(params[:file])
     redirect_to players_path
   end
 
   def fantasyanalytics_proj_import
-    Player.fantasyanalytics_proj_import(params[:file])
+    Playerdata.fantasyanalytics_proj_import(params[:file])
+    redirect_to players_path
+  end
+
+  def nerds_proj_import
+    Playerdata.nerds_proj_import
     redirect_to players_path
   end
 
   def ownership_import
-    Player.ownership_import(params[:file])
+    Playerdata.ownership_import(params[:file])
     redirect_to players_path
   end
 
+  #output
   def csv_output
     @output = Player.by_ave_points(Player.all)
     respond_to do |format|
@@ -66,5 +72,4 @@ class DataController < ApplicationController
       end
     end
   end
-
 end

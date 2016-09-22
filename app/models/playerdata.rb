@@ -1,5 +1,4 @@
-class Data < ActiveRecord::Base
-  validates :name, presence: true
+class Playerdata < ActiveRecord::Base
 
   #parsers for imports:
 
@@ -95,6 +94,35 @@ class Data < ActiveRecord::Base
       p.save unless p == nil
     end
   end
+  
+  def self.nerds_proj_import
+    players = []
+    # Must request a specific position: QB, RB, WR, TE, K, DEF. 
+    # You can also send along the specific week number (1-17). 
+    # If you omit a week, it defaults to the current week.
+      players << FFNerd.weekly_rankings('QB')
+      players << FFNerd.weekly_rankings('WR')
+      players << FFNerd.weekly_rankings('RB')
+      players << FFNerd.weekly_rankings('TE')
+      players << FFNerd.weekly_rankings('K')
+      players.flatten
+      binding.pry
+    # p = Player.find_by(name: p)
+    #   if p == nil
+    #     if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
+    #       binding.pry
+    #     elsif Player.where("name LIKE ?", "%#{row['playername']}%").length < 1
+    #       #ignore player not on fan duel
+    #     else
+    #       p = Player.where("name LIKE ?", "%#{row['playername']}%")[0] 
+    #     end 
+    #   end
+    # p['projected_points'] << row['points'] unless p == nil
+    # p['projected_points'] << row['upper'] unless p == nil
+    # p['projected_points'] << row['lower'] unless p == nil
+    # p.save unless p == nil
+    # end
+  end
 
   def self.ownership_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
@@ -112,3 +140,5 @@ class Data < ActiveRecord::Base
       p.save unless p == nil
     end
   end
+
+end
