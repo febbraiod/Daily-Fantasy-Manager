@@ -35,6 +35,9 @@ gem 'rspec'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#API gem
+gem 'fantasy_football_nerd'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

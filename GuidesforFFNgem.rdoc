@@ -1,0 +1,58 @@
+Weekly Rankings
+
+Returns an array of players with expected weekly fantasy points for both standard and PPR scoring.
+
+Must request a specific position: QB, RB, WR, TE, K, DEF. You can also send along the specific week number (1-17). If you omit a week, it defaults to the current week.
+
+player = FFNerd.weekly_rankings('QB', 2).first
+player.week             # "2"
+player.player_id        # "14"
+player.name             # "Drew Brees"
+player.position         # "QB"
+player.team             # "NO"
+player.standard         # "24.80"
+player.standard_low     # "18.92"
+player.standard_high    # "32.00"
+player.ppr              # "24.80"
+player.ppr_low          # "18.92"
+player.ppr_high         # "32.00"
+player.injury           # nil
+player.practice_status  # nil
+player.game_status      # nil
+player.last_update      # nil
+Weekly Projections
+
+Returns an array of players with expected weekly values for each scoring category.
+
+Must request a specific position: QB, RB, WR, TE, K (But NOT DEF!). You can also send along the specific week number (1-17). If you omit a week, it defaults to the current week.
+
+player = FFNerd.weekly_projections('QB', 1).first
+player.week             # "1"
+player.player_id        # "14"
+player.position         # "QB"
+player.pass_att         # "39.0"
+player.pass_cmp         # "25.0"
+player.pass_yds         # "317.0"
+player.pass_td          # "2.0"
+player.pass_int         # "1.0"
+player.rush_att         # "1.0"
+player.rush_yds         # "1.0"
+player.rush_td          # "0.0"
+player.fumbles_lost     # "0.0"
+player.receptions       # "0.0"
+player.rec_yds          # "0.0"
+player.rec_td           # "0.0"
+player.fg               # "0.0"
+player.fg_att           # "0.0"
+player.xp               # "0.0"
+player.def_int          # "0.0"
+player.def_fr           # "0.0"
+player.def_ff           # "0.0"
+player.def_sack         # "0.0"
+player.def_td           # "0.0"
+player.def_ret_td       # "0.0"
+player.def_safety       # "0.0"
+player.def_pa           # "0.0"
+player.def_yds_allowed  # "0.0"
+player.display_name     # "Drew Brees"
+player.team             # "NO"

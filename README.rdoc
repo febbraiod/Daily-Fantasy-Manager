@@ -3,9 +3,14 @@ Focus on:
 the value of a player is “determined not by the number of points he scores, 
 but by how much he outscores his peers at his particular position.”
 
-add drop off(each players score minus the score of the fifth next player in terms of ave projection) see above
+for roto lineup builder: make it so we can take in the csv template from roto and adjust their projections automagically, throw out players not in our db and output the result.
 
 add button to narrow down field by slates
+
+make a page that checks for top five floors, top five ceiling, top do, and top_5 dropoff, lowest CAP, Lowest CAP_5
+each player that fits gets a +1
+show these platers and the scores.
+
 
 need to make tables sortable(React?)
 

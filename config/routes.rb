@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'players#index'
   resources :players
 
+  get '/topfives' => 'players#topfives'
+
   get '/fdupload' => 'data#fd_upload'
   post '/fdimport' => 'data#fd_import'
 
@@ -15,10 +17,9 @@ Rails.application.routes.draw do
 
   post '/ownership_import' => 'data#ownership_import'
 
-  get 'csv_output' => 'players#csv_output'
-  get 'ceil_output' => 'players#ceil_output'
-  get 'floor_output' => 'players#floor_output'
+  get 'csv_output' => 'data#csv_output'
+  get 'ceil_output' => 'data#ceil_output'
+  get 'floor_output' => 'data#floor_output'
 
-  get '/topfives' => 'players#topfives'
   
 end

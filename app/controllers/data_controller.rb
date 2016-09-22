@@ -37,4 +37,34 @@ class DataController < ApplicationController
     redirect_to players_path
   end
 
+  def csv_output
+    @output = Player.by_ave_points(Player.all)
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"dons_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+  def ceil_output
+    @output = Player.by_ave_points(Player.all)
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"ceil_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+  def floor_output
+    @output = Player.by_ave_points(Player.all)
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"floor_projections.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
 end
