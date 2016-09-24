@@ -1,5 +1,5 @@
 class PlayerdataController < ApplicationController
-    require 'csv'
+  require 'csv'
 
   def fd_upload
   end
@@ -40,6 +40,17 @@ class PlayerdataController < ApplicationController
   def ownership_import
     Playerdata.ownership_import(params[:file])
     redirect_to players_path
+  end
+
+  def lineup_builder
+  end
+
+  def roto_convert_floor
+    @floors = Playerdata.roto_convert_floor(params[:file])
+    respond_to do |format|
+      format.html
+      format.csv { send_data Playerdata.to_csv(@floors) }
+    end
   end
 
   #output

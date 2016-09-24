@@ -126,20 +126,6 @@ class Player < ActiveRecord::Base
     arr.reduce(0, :+)/arr.length
   end
 
-  def self.setSlate(time)
-    if time[0,3].downcase == 'mon'
-      5
-    elsif time[0,5].downcase == 'sun 8'
-      4
-    elsif time[0,5].downcase == 'sun 4'
-      3
-    elsif time[0,5].downcase == 'sun 1'
-      2
-    else
-      1
-    end
-  end
-
   def self.tops_at_pos(players_at_pos)
     top_ave_proj = Player.by_ave_points(players_at_pos).first(5)
     top_ave_value = Player.by_ave_value(players_at_pos).first(5)

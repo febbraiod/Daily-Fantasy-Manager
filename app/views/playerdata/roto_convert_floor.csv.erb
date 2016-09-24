@@ -1,0 +1,3 @@
+<%- @floors.each do |player| -%>
+<%= CSV.generate_line(player) -%>
+<%- end -%>

@@ -1,0 +1,7 @@
+<h1>Floor for Lineup Builder:</h1>
+<p>upload roto csv:</p>
+
+<%= form_tag roto_convert_floor_path + '.csv', multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>

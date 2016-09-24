@@ -142,4 +142,59 @@ class Playerdata < ActiveRecord::Base
     end
   end
 
+  def self.roto_convert_floor(file)
+    player_floors = []
+
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      current_player = []
+
+      p = Player.find_by(name: row['name'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['name']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['name']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['name']}%")[0] 
+          end 
+        end
+      current_player.push(row['player_id'])
+      current_player.push(row['name'])
+
+      if p
+        current_player.push(p.projected_points.min)
+      else
+        current_player.push(0)
+      end
+
+      player_floors << current_player
+    end
+
+    player_floors
+  end
+
+  def self.to_csv(data)
+    CSV.generate do |csv|
+      data.each do |player|
+        csv << player
+      end
+    end
+  end
+
+  #import helper
+
+  def self.setSlate(time)
+    if time[0,3].downcase == 'mon'
+      5
+    elsif time[0,5].downcase == 'sun 8'
+      4
+    elsif time[0,5].downcase == 'sun 4'
+      3
+    elsif time[0,5].downcase == 'sun 1'
+      2
+    else
+      1
+    end
+  end
+
 end

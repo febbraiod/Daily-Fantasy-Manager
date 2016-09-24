@@ -1,22 +1,23 @@
 Focus on:
 
+add dotenv for nerds key
+
 the value of a player is “determined not by the number of points he scores, 
 but by how much he outscores his peers at his particular position.”
 
-for roto lineup builder: make it so we can take in the csv template from roto and adjust their projections automagically, throw out players not in our db and output the result.
+DO THIS ---- for roto lineup builder: make it so we can take in the csv template from roto and adjust their projections automagically, throw out players not in our db and output the result.  For GPP if we dont have a ceiling proj, we keep the roto projection. If we dont have a floor project we make the roto projection 0.
+
+in this vein how about a method to comibined the multiple csv's from roto and FFP
 
 add button to narrow down field by slates
 
-make a page that checks for top five floors, top five ceiling, top do, and top_5 dropoff, lowest CAP, Lowest CAP_5
-each player that fits gets a +1
-show these platers and the scores.
+calculate roto line-up percentages using floor for 50/50 and ceiling for GPP adjusted by number of top fives and divided by number of player in group.
+
 
 
 need to make tables sortable(React?)
 
 javascript tables salary x-axis project points y-axis
-
-play 10% GPP 40% 50/50 40% double ups
 
 add raw stat crunch with form to add personal adjustment. This should produce a FP proj and add it to the players array - use a new controller for this. StatsCalc
 
