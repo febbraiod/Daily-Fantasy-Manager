@@ -53,6 +53,22 @@ class PlayerdataController < ApplicationController
     end
   end
 
+  def roto_convert_ceil
+    @ceils = Playerdata.roto_convert_ceil(params[:file])
+    respond_to do |format|
+      format.html
+      format.csv { send_data Playerdata.to_csv(@ceils) }
+    end
+  end
+
+  def roto_convert_ave
+    @aves = Playerdata.roto_convert_ave(params[:file])
+    respond_to do |format|
+      format.html
+      format.csv { send_data Playerdata.to_csv(@aves) }
+    end
+  end
+
   #output
   def csv_output
     @output = Player.by_ave_points(Player.all)

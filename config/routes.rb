@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'floor_output' => 'playerdata#floor_output'
 
   get 'lineup_builder' => 'playerdata#lineup_builder'
-  post 'roto_convert_floor' => 'playerdata#roto_convert_floor#'
+  post 'roto_convert_floor' => 'playerdata#roto_convert_floor'
+  post 'roto_convert_ceil' => 'playerdata#roto_convert_ceil'
+  post 'roto_convert_ave' => 'playerdata#roto_convert_ave'
 
 end

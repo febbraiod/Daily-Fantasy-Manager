@@ -142,6 +142,8 @@ class Playerdata < ActiveRecord::Base
     end
   end
 
+  #converts for roto:
+
   def self.roto_convert_floor(file)
     player_floors = []
 
@@ -172,6 +174,70 @@ class Playerdata < ActiveRecord::Base
 
     player_floors
   end
+
+  def self.roto_convert_ceil(file)
+    player_ceils = []
+
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      current_player = []
+
+      p = Player.find_by(name: row['name'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['name']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['name']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['name']}%")[0] 
+          end 
+        end
+      current_player.push(row['player_id'])
+      current_player.push(row['name'])
+
+      if p
+        current_player.push(p.projected_points.max)
+      else
+        current_player.push(row['fpts'])
+      end
+
+      player_ceils << current_player
+    end
+
+    player_ceils
+  end
+
+  def self.roto_convert_ave(file)
+    player_aves = []
+
+    CSV.foreach(file.tempfile, headers: true) do |row|
+      current_player = []
+
+      p = Player.find_by(name: row['name'])
+        if p == nil
+          if Player.where("name LIKE ?", "%#{row['name']}%").length > 1
+            binding.pry
+          elsif Player.where("name LIKE ?", "%#{row['name']}%").length < 1
+            #ignore player not on fan duel
+          else
+            p = Player.where("name LIKE ?", "%#{row['name']}%")[0] 
+          end 
+        end
+      current_player.push(row['player_id'])
+      current_player.push(row['name'])
+
+      if p
+        current_player.push(Player.average_points(p.projected_points))
+      else
+        current_player.push(row['fpts'])
+      end
+
+      player_aves << current_player
+    end
+
+    player_aves
+  end
+
+  #export converts:
 
   def self.to_csv(data)
     CSV.generate do |csv|

@@ -5,3 +5,27 @@
   <%= file_field_tag :file %><br>
   <%= submit_tag "Import CSV" %>
 <% end %>
+
+<br>
+<hr>
+<br>
+
+<h1>Ceiling for Lineup Builder:</h1>
+<p>upload roto csv:</p>
+
+<%= form_tag roto_convert_ceil_path + '.csv', multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<br>
+<hr>
+<br>
+
+<h1>Averages for Lineup Builder:</h1>
+<p>upload roto csv:</p>
+
+<%= form_tag roto_convert_ave_path + '.csv', multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>
