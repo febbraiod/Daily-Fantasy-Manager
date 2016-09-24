@@ -241,9 +241,10 @@ class Playerdata < ActiveRecord::Base
 
   def self.to_csv(data)
     CSV.generate do |csv|
-      data.each do |player|
-        csv << player
-      end
+      csv << ['player_id', 'name', 'fpts']
+        data.each do |player|
+          csv << player
+        end
     end
   end
 
