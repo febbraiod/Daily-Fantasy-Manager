@@ -4,7 +4,8 @@
   <td>
     <h5>
       <%players.each do |player, top5count|%>
-        <%= player%> - <%=top5count%><br>
+        <% p = Player.find_by(name: player) %>
+        <%= player%> - <%=top5count%> (<%=p.opponent.send(p.position.downcase) unless p.position == 'D' || p.position == 'K'%>)<br>
       <%end%>
     </h5>
   </td>
