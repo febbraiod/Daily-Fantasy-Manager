@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   post 'roto_convert_ceil' => 'playerdata#roto_convert_ceil'
   post 'roto_convert_ave' => 'playerdata#roto_convert_ave'
 
+  get 'opp_upload' => 'opponents#opp_upload'
+  post 'opponents_import' => 'opponents#opponents_import'
+
 end

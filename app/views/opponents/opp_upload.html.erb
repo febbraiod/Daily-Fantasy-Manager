@@ -1,0 +1,6 @@
+<h1>VS DEF History:</h1>
+
+<%= form_tag opponents_import_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import CSV" %>
+<% end %>

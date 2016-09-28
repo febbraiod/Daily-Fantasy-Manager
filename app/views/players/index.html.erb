@@ -1,4 +1,4 @@
-  <div id='csv_links'>
+  <div id='csv_links' style='display: none;'>
     <%=link_to 'download ave projections', csv_output_path  + ".csv"%><br>
     <%=link_to 'download ceiling projections', ceil_output_path  + ".csv"%><br>
     <%=link_to 'download floor projections', floor_output_path  + ".csv"%><br>
@@ -16,6 +16,7 @@
       <th align="left">Floor</th>
       <th align="left">DO, CAP, DO_5, CAP_5</th>
       <th align="left">Ownership</th>
+      <th align="left">DEF Adjustor</th>
     </tr>
     <tr>
       <td class='benchmark'>Ave QB</td>
