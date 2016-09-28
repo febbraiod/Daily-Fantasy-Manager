@@ -6,7 +6,7 @@ class PlayerdataController < ApplicationController
 
   def fd_import
     Playerdata.fd_import(params[:file])
-    redirect_to players_path
+    redirect_to proj_upload_path
   end
 
   def proj_upload

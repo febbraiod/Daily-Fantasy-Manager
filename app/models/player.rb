@@ -1,8 +1,9 @@
 class Player < ActiveRecord::Base
   validates :name, presence: true
 
-  #get players to display:
+  belongs_to :opponent
 
+  #get players to display:
   def self.by_ave_value(players)
     players = players.sort_by {|p|
       if p.projected_points.length == 0

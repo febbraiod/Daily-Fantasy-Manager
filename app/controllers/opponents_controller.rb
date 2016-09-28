@@ -6,7 +6,7 @@ class OpponentsController < ApplicationController
 
   def opponents_import
     Opponent.opp_import(params[:file])
-    redirect_to top_fives_path
+    redirect_to fdupload_path
   end
 
 end

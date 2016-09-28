@@ -42,7 +42,7 @@
       <tr>
         <td><%=p.name%></td>
         <td><%=p.position%></td>
-        <td><%=p.team%> v. <%=p.opponent%></td>
+        <td><%=p.team%> v. <%=p.opponent.team%></td>
         <td><%='%.2f' % (Player.average_points(p.projected_points)) unless p.projected_points.length == 0 %></td> 
         <td><%=p.salary%></td>
         <td><%='%.2f' % (p.player_value)%></td>
@@ -50,6 +50,7 @@
         <td><%=p.projected_points.min%></td>
         <td><%="#{p.dropoff.round(2) unless !p.dropoff}, #{p.cap.round(2) unless !p.cap}, #{p.dropoff_5.round(2)unless !p.dropoff_5}, #{p.cap_5.round(2) unless !p.cap_5}"%></td>
         <td><%=p.ownership%></td>
+        <td><%=p.opponent.send(p.position.downcase)%></td>
       </tr>
     <% end %>
   </table>
