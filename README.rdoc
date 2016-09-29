@@ -5,10 +5,6 @@ add dotenv for nerds key
 the value of a player is “determined not by the number of points he scores, 
 but by how much he outscores his peers at his particular position.”
 
-
-add a way to indicate if they are playing a friendly defense. color code?
-
-
 how about a method to combined the multiple csv's from roto and FFP?
 
 
