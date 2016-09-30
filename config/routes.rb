@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   get 'opp_upload' => 'opponents#opp_upload'
   post 'opponents_import' => 'opponents#opponents_import'
 
+  delete 'slate_one_kill' => 'playerdata#slate_one_kill'
+
 end

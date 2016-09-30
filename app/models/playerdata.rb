@@ -144,6 +144,12 @@ class Playerdata < ActiveRecord::Base
     end
   end
 
+  #delete method based on slate
+
+  def kill_slate(slate)
+    Player.destroy_all("slate <= #{slate}")
+  end
+
   #converts for roto:
 
   def self.roto_convert_floor(file)

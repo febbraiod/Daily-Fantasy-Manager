@@ -69,6 +69,13 @@ class PlayerdataController < ApplicationController
     end
   end
 
+  #delete based on slate
+
+  def slate_one_kill
+    Player.destroy_all("slate <= 1")
+    redirect_to players_path
+  end
+
   #output
   def csv_output
     @output = Player.by_ave_points(Player.all)
