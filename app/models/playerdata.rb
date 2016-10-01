@@ -27,7 +27,7 @@ class Playerdata < ActiveRecord::Base
 
   def self.yahoo_proj_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
-      p = Player.find_by(name: row['playername'])
+      row['playername'] == 'LeVeon Bell' ? p = Player.find_by(name: "Le'Veon Bell") : p = Player.find_by(name: row['playername'])
         if p == nil
           if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
             binding.pry
@@ -80,7 +80,7 @@ class Playerdata < ActiveRecord::Base
 
   def self.fantasyanalytics_proj_import(file)
     CSV.foreach(file.tempfile, headers: true) do |row|
-      p = Player.find_by(name: row['playername'])
+      row['playername'] == 'LeVeon Bell' ? p = Player.find_by(name: "Le'Veon Bell") : p = Player.find_by(name: row['playername'])
         if p == nil
           if Player.where("name LIKE ?", "%#{row['playername']}%").length > 1
             binding.pry

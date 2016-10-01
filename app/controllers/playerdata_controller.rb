@@ -76,6 +76,11 @@ class PlayerdataController < ApplicationController
     redirect_to players_path
   end
 
+  def monday_night_kill
+    Player.destroy_all("slate = 5")
+    redirect_to players_path
+  end
+
   #output
   def csv_output
     @output = Player.by_ave_points(Player.all)

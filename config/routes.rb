@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   post 'opponents_import' => 'opponents#opponents_import'
 
   delete 'slate_one_kill' => 'playerdata#slate_one_kill'
+  delete 'monday_night_kill' => 'playerdata#monday_night_kill'
 
 end

@@ -8,7 +8,9 @@ but by how much he outscores his peers at his particular position.”
 how about a method to combined the multiple csv's from roto and FFP?
 
 
-add button to narrow down field by slates
+add buttons to narrow down field by slates
+
+fix problem with importing Le'veon and D. Johnson
 
 
 calculate roto line-up percentages using floor for 50/50 and ceiling for GPP adjusted by number of top fives and divided by number of player in group.
@@ -51,6 +53,19 @@ in addition to weighting how about generating custom projections from these fact
 conjunction with raw stats from FFA
 
 
+def fizzbuzz(start, end)
+
+(start..end).each do |i|
+  if i % 3 == 0 $$ i % 5 == 0
+    puts 'FizzBuzz'
+  elsif i % 3 == 0
+    puts 'Fizz'
+  elsif i % 5 == 0
+    puts 'Buzz'
+  else
+    puts i
+  end
+end
 
 
 -----
