@@ -32,5 +32,7 @@ Rails.application.routes.draw do
 
   delete 'slate_one_kill' => 'playerdata#slate_one_kill'
   delete 'monday_night_kill' => 'playerdata#monday_night_kill'
+  delete 'one_pm_kill' => 'playerdata#one_pm_kill'
+  delete 'late_kill' => 'playerdata#late_kill'
 
 end

@@ -76,6 +76,16 @@ class PlayerdataController < ApplicationController
     redirect_to players_path
   end
 
+  def one_pm_kill
+    Player.destroy_all("slate <= 2")
+    redirect_to players_path
+  end
+
+  def late_kill
+    Player.destroy_all("slate <= 3")
+    redirect_to players_path
+  end
+
   def monday_night_kill
     Player.destroy_all("slate = 5")
     redirect_to players_path
